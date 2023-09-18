@@ -1,32 +1,38 @@
-# ML_telecom_customer_outflow
-Оператор связи «Ниединогоразрыва.ком» хочет научиться прогнозировать отток клиентов. Если выяснится, что пользователь планирует уйти, ему будут предложены промокоды и специальные условия. Команда оператора собрала персональные данные о некоторых клиентах, информацию об их тарифах и договорах.
+# Telecom customer outflow
+This project is an example of using machine learning to predict customer churn.
+The best trained model was integrated in Api using FastAPI. The web application was packaged in a Docker container.
 
-### Описание услуг
+## Requirements:
+* Python 3.10+
 
-Оператор предоставляет два основных типа услуг: 
+## Training and tuning models
+Data preprocessing, training and tuning model in jupyter [telecom_customer_outflow.ipynb](https://github.com/Vladruss/ML_Determining_the_cost_of_cars/blob/main/Determining_the_cost_of_cars.ipynb)
 
-1. Стационарную телефонную связь. Возможно подключение телефонного аппарата к нескольким линиям одновременно.
-2. Интернет. Подключение может быть двух типов: через телефонную линию (DSL*,* от англ. *digital subscriber line*, «цифровая абонентская линия») или оптоволоконный кабель (*Fiber optic*).  
+## Running the model locally in fastapi
+1. Activate the environment and install dependencies
+```
+source /path/to/venv/bin/activate
+pip install -r requirements.txt
+```
+or
+```
+python3 -m pip install poetry==1.6.1
+poetry install
+```
 
-Также доступны такие услуги:
+2. Launch the service
+```
+uvicorn main:app --reload
+```
 
-- Интернет-безопасность: антивирус (*DeviceProtection*) и блокировка небезопасных сайтов (*OnlineSecurity*);
-- Выделенная линия технической поддержки (*TechSupport*);
-- Облачное хранилище файлов для резервного копирования данных (*OnlineBackup*);
-- Стриминговое телевидение (*StreamingTV*) и каталог фильмов (*StreamingMovies*).
+## Deployment with Docker
+1. Build the Docker image
+```
+docker build -t ml_api .
+```
+3. Running the Docker image
+```
+docker run -d -p 8000:8000 ml_api
+```
 
-За услуги клиенты могут платить каждый месяц или заключить договор на 1–2 года. Доступны различные способы расчёта и возможность получения электронного чека.
-
-### Описание данных
-
-Данные состоят из файлов, полученных из разных источников:
-
-- `contract.csv` — информация о договоре;
-- `personal.csv` — персональные данные клиента;
-- `internet.csv` — информация об интернет-услугах;
-- `phone.csv` — информация об услугах телефонии.
-
-Во всех файлах столбец `customerID` содержит код клиента.
-
-Информация о договорах актуальна на 1 февраля 2020.
 

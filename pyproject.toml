@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "customerchurn"
+version = "0.1.0"
+description = ""
+authors = ["Vladislav Maslin <vlad-maslin.93@mail.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+catboost = "1.2.1"
+fastapi = "0.103.1"
+matplotlib = "3.7.3"
+numpy = "1.25.2"
+pandas = "2.1.0"
+scikit-learn = "1.3.0"
+seaborn = "0.12.2"
+uvicorn = "0.23.2"
+gunicorn = "21.2.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
